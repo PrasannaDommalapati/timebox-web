@@ -1,8 +1,11 @@
-export default class ScheduableBase {
+import { Draggable } from "../directives/draggable.directive";
+
+export default class ScheduableBase extends Draggable {
   /**
    * _id - Unique id of the scheduable.
    */
-  constructor(private _id : string, private _color : string = "#FF0") {
+  constructor(private _id : string, private _color : string = "#FF0")  {
+    super();
   }
 
   get id() {
@@ -13,4 +16,3 @@ export default class ScheduableBase {
     return this._color;
   }
 }
- 

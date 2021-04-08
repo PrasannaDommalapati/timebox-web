@@ -1,6 +1,8 @@
+import { Draggable } from "../directives/draggable.directive";
+import { DropTarget } from "../directives/drop-target.directive";
 import ScheduableBase from "./scheduable-base.model";
 
-export default class TimeboxModel {
+export default class TimeboxModel extends DropTarget {
   /**
    * timeFrom - the time this box starts at
    * duration - the duration of this time box
@@ -8,6 +10,7 @@ export default class TimeboxModel {
    * scheduableHistory - the list of all scheduables that have been scheduled
    */
   constructor(private _from : Date, private _durationInMins : number, private _allocatedScheduable : ScheduableBase | null = null, private _scheduableHistory : ScheduableBase[] = []) {
+    super(undefined, undefined, "timebox");
   }
 
   set allocatedScheduable(scheduable : ScheduableBase | null) {
@@ -31,5 +34,17 @@ export default class TimeboxModel {
 
   get durationInMins() : number {
     return this._durationInMins;
+  }
+
+  canDrop(draggable : Draggable) {
+    if (this._allocatedScheduable)
+      return false;
+
+    return !!draggable;
+  }
+
+  dropped(draggable : Draggable) {
+    this._allocatedScheduable = <ScheduableBase>draggable;
+    console.log("dropped")
   }
 }

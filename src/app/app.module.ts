@@ -8,6 +8,7 @@ import { TimeboxComponent } from './schedule/timebox/timebox.component';
 import { ToTimeSlotTimePipe } from './pipes/to-time-slot-time.pipe';
 import { DraggableDirective } from './directives/draggable.directive';
 import { DropTargetDirective } from './directives/drop-target.directive';
+import { ScheduableComponent } from './schedule/scheduable/scheduable.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DropTargetDirective } from './directives/drop-target.directive';
     TimeboxComponent,
     ToTimeSlotTimePipe,
     DraggableDirective,
-    DropTargetDirective
+    DropTargetDirective,
+    ScheduableComponent
   ],
   imports: [
     BrowserModule,

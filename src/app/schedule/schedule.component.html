@@ -5,12 +5,10 @@
         <td class="time">
           <h1>{{timebox.from | toTimeSlotTime}}</h1>
         </td>
-        <td [ngClass]="{ 'timebox' : true, 'scheduled' : timebox.allocatedScheduable }" [ngStyle]="{'backgroundColor': timebox.allocatedScheduable?.color}" appDropTarget [dropTargetName]="'timeslot'">
-          <div appDraggable [targets]="['timeslot']">
-            <h1>
-              {{timebox.allocatedScheduable?.id}}
-            </h1>
-          </div>
+        <td [ngClass]="{ 'timebox' : true, 'scheduled' : timebox.allocatedScheduable }" [ngStyle]="{'backgroundColor': timebox.allocatedScheduable?.color}" [appDropTarget]="timebox">
+          <app-scheduable [scheduable]="timebox.allocatedScheduable">
+
+          </app-scheduable>
         </td>
       </tr>
     </div>

@@ -20,9 +20,10 @@ export class Draggable {
 })
 export class DraggableDirective {
   @Input() targets !: string[];
+  @Input("appDraggable") draggable !: Draggable;
 
   @HostListener("dragstart", ['$event']) onDragStart(e : DragEvent) {
-    this._draggingService.startDrag(new Draggable(this.targets));
+    this._draggingService.startDrag(this.draggable);
   }
 
   @HostListener("dragend", ['$event']) onDragEnd(e : DragEvent) {

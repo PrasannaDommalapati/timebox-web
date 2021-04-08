@@ -42,7 +42,9 @@ export class DraggingService {
   }
 
   drop(dropTarget : DropTarget) : boolean {
+    console.log("drop")
     if (this.canDrop(dropTarget)) {
+      dropTarget.dropped(this.activeDraggable!);
       this.activeDraggable = null;
       return true;
     }
